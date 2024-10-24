@@ -9,8 +9,7 @@ struct FoodItemView: View {
                 AsyncImage(url: URL(string: "https://foodserver-c5lx.onrender.com/img/\(foodItem.img)")) { image in
                     image
                         .resizable()
-                        
-                        .frame(width: 140, height: 140)
+                        .frame(width: 150, height: 140)
                         .cornerRadius(15)
                 } placeholder: {
                     ProgressView()
@@ -37,6 +36,25 @@ struct FoodItemView: View {
                     .frame(height: 2)
                     .foregroundColor(.gray)
                 Spacer()
+                HStack{
+                    Button(action: {
+                        print("Button tapped!")
+                    }) {
+                        // Button label
+                        Text("View Deails")
+                            .font(.title3.bold())
+                            .padding(.horizontal, 5)
+                            .padding(.vertical, 5)
+                            .background(AppColor.primary.color)
+                            .foregroundColor(.white)
+                            .cornerRadius(8)
+                    }
+                    
+                    Image(systemName: "heart") // Heart icon from SF Symbols
+                        .foregroundColor(AppColor.shadeThree.color)
+                                   
+                    
+                }
             }
             .padding()
             .background(Color.white)

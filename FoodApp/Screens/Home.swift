@@ -4,6 +4,7 @@ import SwiftUI
 struct HomeView: View {
     
     @ObservedObject var viewModel = FoodViewModel()
+    @State private var inputText: String = ""
     
     var body: some View {
         NavigationView {
@@ -11,25 +12,23 @@ struct HomeView: View {
                 LinearGradient(gradient: Gradient(colors: [AppColor.white.color, AppColor.white.color]), startPoint: .top, endPoint: .bottom)
                     .edgesIgnoringSafeArea(.all)
                 
-                ScrollView {
-                
-                    VStack(spacing: 15) {
-                        Text("Let's Eat Something!")
-                            .font(.title)
-                            .padding(.top)
-                        
-                        Text("DELICIOUS")
-                            .font(.title)
-                            .padding(.top)
-                        
-                        LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 15), count: 2)) {
-                            ForEach(viewModel.foodItems) { item in
-                                FoodItemView(foodItem: item)
-                            }
-                        }
-                        .padding()
-                    }
+                VStack{
                     
+                    
+                    
+                    
+                    
+                    ScrollView {
+                        VStack(spacing: 15) {
+                            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 15), count: 2)) {
+                                ForEach(viewModel.foodItems) { item in
+                                    FoodItemView(foodItem: item)
+                                }
+                            }
+                            .padding()
+                        }
+                        
+                    }
                 }
             }
         }
